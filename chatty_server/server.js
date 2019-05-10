@@ -32,10 +32,38 @@ wss.on('connection', (ws) => {
   console.log('Client connected');
   ws.on('message', (message) => {
     let cMessage = JSON.parse(message)
-    cMessage.id = UUID();
+    
+    console.log("server",message);
+    wss.clients.forEach(function each(client) {
+      client.send(wss.clients.size);
+    });
+    switch (cMessage.type) {
+      case 'postMessage':
+      cMessage.type = 'incomingMessage';
+      cMessage.id = UUID();
+      
+      cMessage.content = cMessage.content;
+      cMessage.username = cMessage.username;
+      cMessage.usersLoggedIn = wss.clients.forEach(function each(client) {
+        client.send(wss.clients.size);
+      });
+      console.log(cMessage);
+      break;  
+      case 'postNotification':
+        cMessage.type = 'incomingNotification';
+        cMessage.content = cMessage.content;
+        cMessage.id = UUID();
+        
+        break;
+    }
+    cMessage.usersLoggedIn = wss.clients.size;
     wss.broadcast(JSON.stringify(cMessage));
+    
     console.log("user " + cMessage.username + " said " + cMessage.content)
   })
   // Set up a callback for when a client closes the socket. This usually means they closed their browser.
   ws.on('close', () => console.log('Client disconnected'));
+  wss.clients.forEach(function each(client) {
+    client.send(wss.clients.size);
+  });
 });

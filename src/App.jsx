@@ -19,14 +19,12 @@ class App extends Component {
       console.log('Browser client connected');
     };
     this.socket.onmessage = (event) => {
-      // let numUser=Number(event.data);
-      // this.setState=({usersLoggedIn: incoming.loggedIn})
       let serverMessage = JSON.parse(event.data);
       console.log(serverMessage)
 
       if (Object.keys(serverMessage).includes("loggedIn")) {
         //if someone just opened a new client in the browser, set the state to the random color that was assigned by the server.  if someone closed the client, they won't be assigned a color b/c the server won't send a color to the client to be updated
-        this.setState({usersLoggedIn: incoming.loggedIn});
+        this.setState({usersLoggedIn: serverMessage.loggedIn});
         if (!this.state.color) {
           this.setState({color: serverMessage.color});
         }
@@ -42,15 +40,6 @@ class App extends Component {
       
     }
     console.log("componentDidMount <App />");
-    // setTimeout(() => {
-    //   console.log("Simulating incoming message");
-    //   // Add a new message to the list of messages in the data store
-    //   const newMessage = {id: 3, username: "Michelle", content: "Hello there!"};
-    //   const messages = this.state.messages.concat(newMessage)
-    //   // Update the state of the app component.
-    //   // Calling setState will trigger a call to render() in App and all child components.
-    //   this.setState({messages: messages})
-    // }, 3000);
   }
 
   addMessage=(message)=>{
@@ -84,7 +73,7 @@ class App extends Component {
       <div>
         <nav className="navbar">
         <a href="/" className="navbar-brand">Chatty</a>
-        <span>{this.state.usersLoggedIn}people has been loki'd</span>
+        <span>{this.state.usersLoggedIn} people has been loki'd</span>
         </nav>
         
         <MessageList messages ={this.state.messages}/>

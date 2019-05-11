@@ -30,7 +30,7 @@ This project uses port 3000 (<http://localhost:3000/>) in your browser.
 
 ## Final Product
 
-!["Screenshot of Pika-chat home page.  Conversation with three separate open clients (browser tabs)"](https://i.imgur.com/LRCv6Lf.jpg)
+!["Screenshot of Pika-chat home page.  Conversation with three separate open clients (browser tabs)"](https://github.com/Fionalan727/react-simple-boilerplate/blob/master/doc/Screenshot%20from%202019-05-11%2013-08-03.png)
 
 ## Getting Started
 

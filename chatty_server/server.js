@@ -52,7 +52,7 @@ wss.on('connection', (ws) => {
         
         break;
     }
-    cMessage.usersLoggedIn = wss.clients.size;
+   
     wss.broadcast(JSON.stringify(cMessage));
     
     console.log("user " + cMessage.username + " said " + cMessage.content)

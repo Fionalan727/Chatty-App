@@ -6,7 +6,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: {name: "Bob"}, // optional. if currentUser is not defined, it means the user is Anonymous
+      currentUser: {name: "Anonymous"}, // optional. if currentUser is not defined, it means the user is Anonymous
       messages: [],
       usersLoggedIn: 0
 
@@ -72,8 +72,9 @@ class App extends Component {
     return (
       <div>
         <nav className="navbar">
-        <a href="/" className="navbar-brand">Chatty</a>
-        <span>{this.state.usersLoggedIn} people has been loki'd</span>
+        <span className="logo"><img src="/styles/loki.png" alt=""/></span>
+        <a href="/" className="navbar-brand">Scepter</a>
+        <span className="userlogin">{this.state.usersLoggedIn} people has been loki'd</span>
         </nav>
         
         <MessageList messages ={this.state.messages}/>

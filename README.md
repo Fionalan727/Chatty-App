@@ -1,6 +1,6 @@
 # ChattyApp Project
 
-ChattyApp is a simple in-browser chat client with basic functionality.  URL's linking to images (png, jpg, jpeg, gif, png, svg) will render the image instead.  
+ChattyApp is a simple in-browser chat client with basic functionality. 
 
 The base React code was provided by LHL (<https://github.com/lighthouse-labs/react-simple-boilerplate/>).
 
